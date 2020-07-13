@@ -11,7 +11,7 @@ const HYDRATED_DATA = [];
 let STATE;
 
 interface QueryEnvironment {
-  hosts: { GRAPHQL: string };
+  hosts: { GRAPHQL: string; API: string };
 }
 
 /**
@@ -39,7 +39,9 @@ export async function graphql(environment: QueryEnvironment, query: string, name
 
     delete STATE[name];
   } else {
-    response = (await http({ method: 'POST', host: environment.hosts.GRAPHQL, url, headers, body }, abortSignal)).data;
+    response = (
+      await http(environment, { method: 'POST', host: environment.hosts.GRAPHQL, url, headers, body }, abortSignal)
+    ).data;
   }
 
   let className = query.split('{')[0].split('(')[0].trim();
