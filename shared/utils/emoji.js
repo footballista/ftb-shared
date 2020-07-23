@@ -1,7 +1,4 @@
-"use strict";
-exports.__esModule = true;
-exports.emoji = void 0;
-exports.emoji = {
+export const emoji = {
     '100': '💯',
     '1234': '🔢',
     umbrella_with_rain_drops: '☔',
@@ -48,7 +45,7 @@ exports.emoji = {
     cool: '🆒',
     free: '🆓',
     id: '🆔',
-    "new": '🆕',
+    new: '🆕',
     ng: '🆖',
     ok: '🆗',
     sos: '🆘',
@@ -1624,5 +1621,6 @@ exports.emoji = {
     wavy_dash: '〰️',
     part_alternation_mark: '〽️',
     congratulations: '㊗️',
-    secret: '㊙️'
+    secret: '㊙️',
 };
+//# sourceMappingURL=emoji.js.map
