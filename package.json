@@ -1,6 +1,6 @@
 {
   "name": "ftb-shared",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Shared code for footballista projects",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "conventional-changelog": "^3.1.21",
+    "conventional-changelog-cli": "^2.0.34",
     "dayjs": "^1.8.29",
     "inquirer": "^7.3.3",
     "lodash-es": "^4.17.15",
