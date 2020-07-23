@@ -36,9 +36,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var emoji_1 = require("../shared/utils/emoji");
-var telegram_1 = require("../shared/utils/telegram");
-var repository_1 = require("../shared/utils/repository");
+var emoji_1 = require("../src/shared/utils/emoji");
+var telegram_1 = require("../src/shared/utils/telegram");
+var repository_1 = require("../src/shared/utils/repository");
 var fs_1 = require("fs");
 var tgClient = new telegram_1.TgClient();
 var notify = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -50,7 +50,7 @@ var notify = function () { return __awaiter(void 0, void 0, void 0, function () 
                 repo = _a.sent();
                 tag = process.env.GITHUB_REF.split('/')[2];
                 changes = JSON.parse(fs_1.readFileSync(__dirname + '/../CHANGELOG.json').toString())[tag];
-                return [4 /*yield*/, tgClient.sendMessage('channel', emoji_1.emoji.purple_heart + " *SHARED COMPONENTS* new tag *v." + tag + "* released. Do not forget to update dependencies in client projects.\n\n\nChanges: " + changes + "\n\n\n\n Full changelog: https://github.com/" + repo.owner + "/" + repo.name + "/blob/master/CHANGELOG.md")];
+                return [4 /*yield*/, tgClient.sendMessage('channel', emoji_1.emoji.purple_heart + " *SHARED COMPONENTS* new tag *v." + tag + "* released. Do not forget to update dependencies in client projects.\n\n\nChanges: \n " + changes + "\n\n\n\n Full changelog: https://github.com/" + repo.owner + "/" + repo.name + "/blob/master/CHANGELOG.md")];
             case 2:
                 _a.sent();
                 return [2 /*return*/];

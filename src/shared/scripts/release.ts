@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 const semver = require('semver');
 const execSync = require('child_process').execSync;
 
-const rootDir = __dirname + '/../../';
+const rootDir = __dirname + '/../../../';
 const git = simpleGit(rootDir);
 
 const SEMVER_INCREMENTS = [
@@ -101,7 +101,12 @@ const generateChangelog = async (version: string) => {
 };
 
 const commitAndTag = async (version: string) => {
-  await git.add([rootDir + 'package.json', rootDir + 'package-lock.json', rootDir + 'CHANGELOG.md']);
+  await git.add([
+    rootDir + 'package.json',
+    rootDir + 'package-lock.json',
+    rootDir + 'CHANGELOG.md',
+    rootDir + 'CHANGELOG.json',
+  ]);
   await git.commit(version);
   await git.addTag(version);
   await git.push('origin', 'master');

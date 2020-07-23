@@ -1,9 +1,9 @@
 // TODO this script isn't ready yet - figure out how to deal with prodBuild
 
-import { getRepository, Repository } from './../utils/repository';
-import { getPr, Pr } from './../utils/pr';
-import { TgClient } from './../utils/telegram';
-import { emoji } from './../utils/emoji';
+import { getRepository, Repository } from '../utils/repository';
+import { getPr, Pr } from '../utils/pr';
+import { TgClient } from '../utils/telegram';
+import { emoji } from '../utils/emoji';
 // import { prodBuild } from './../utils/prod-build';
 
 const prMergeBranch = process.env.GITHUB_REF;
