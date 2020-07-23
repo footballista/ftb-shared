@@ -1,0 +1,1 @@
+{"version":3,"file":"banner.model.js","sourceRoot":"","sources":["banner.model.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAAE,MAAM,kBAAkB,CAAC;AAEjD,MAAM,OAAO,MAAO,SAAQ,aAAa;IAQvC,YAAY,KAAc;QACxB,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,GAAG,CAAC,KAAK,IAAI,EAAE,EAAE,EAAE,CAAC,CAAC;IAC5B,CAAC;CACF"}

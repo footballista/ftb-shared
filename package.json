@@ -10,10 +10,18 @@
   "author": "Fedor Avetisov <f.avetisov@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "@types/node": "^14.0.24",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
+    "conventional-changelog": "^3.1.21",
     "dayjs": "^1.8.29",
-    "marked": "^1.1.0"
+    "inquirer": "^7.3.3",
+    "lodash-es": "^4.17.15",
+    "marked": "^1.1.0",
+    "node-fetch": "^2.6.0",
+    "prettier": "^2.0.5",
+    "semver": "^7.3.2",
+    "simple-git": "^2.15.0"
   }
 }
