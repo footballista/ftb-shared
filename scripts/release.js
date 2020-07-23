@@ -1,7 +1,5 @@
-const execSync = require('child_process').execSync;
-
-// transpiling all code to js
-execSync('tsc -b');
+// transpiling all code to js. If this action changes working tree, you will have to commit changes manually
+require('child_process').execSync('tsc -b');
 
 // then simply running shared script
 require('../shared/scripts/release');
