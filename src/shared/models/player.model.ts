@@ -69,40 +69,41 @@ export class Player extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      league: model => (this.league = new League(model.league)),
-      teams: model => (this.teams = model.teams.map(t => new Team(t))),
-      news: model => (this.news = model.news.map(n => new Post(n))),
-      requests: model => (this.requests = model.requests.map(r => new TransferRequest(r))),
-      disqualifications: model => (this.disqualifications = model.disqualifications.map(d => new Disqualification(d))),
-      birthdayDate: model => {
+      league: (model) => (this.league = new League(model.league)),
+      teams: (model) => (this.teams = model.teams.map((t) => new Team(t))),
+      news: (model) => (this.news = model.news.map((n) => new Post(n))),
+      requests: (model) => (this.requests = model.requests.map((r) => new TransferRequest(r))),
+      disqualifications: (model) =>
+        (this.disqualifications = model.disqualifications.map((d) => new Disqualification(d))),
+      birthdayDate: (model) => {
         this.birthdayDate = dayjs(model.birthdayDate);
         if (!this.birthdayDate.isValid()) this.birthdayDate = dayjs(model.birthday, 'DD.MM.YYYY');
         if (!this.birthdayDate.isValid()) this.birthdayDate = null;
       },
-      blacklistedBy: model => (this.blacklistedBy = new User(model.blacklistedBy)),
-      blacklistedTimestamp: model => {
+      blacklistedBy: (model) => (this.blacklistedBy = new User(model.blacklistedBy)),
+      blacklistedTimestamp: (model) => {
         this.blacklistedTimestamp = model.blacklistedTimestamp;
         this.blacklistedDate = dayjs(model.blacklistedTimestamp, 'X');
       },
-      career: model => {
+      career: (model) => {
         if (!model.career.teams) model.career.teams = [];
         if (!model.career.seasons) model.career.seasons = [];
-        model.career.teams = model.career.teams.map(t => {
+        model.career.teams = model.career.teams.map((t) => {
           if (t.from) t.from = dayjs(t.from);
           if (t.till) t.till = dayjs(t.till);
           return t;
         });
         this.career = model.career;
       },
-      games: model => {
-        return (this.games = model.games.map(g => ({ ...g, game: new Game(g.game) })));
+      games: (model) => {
+        return (this.games = model.games.map((g) => ({ ...g, game: new Game(g.game) })));
       },
-      gamesWithPhotos: model => (this.gamesWithPhotos = model.gamesWithPhotos.map(g => new Game(g))),
-      gamesWithVideos: model => (this.gamesWithVideos = model.gamesWithVideos.map(g => new Game(g))),
+      gamesWithPhotos: (model) => (this.gamesWithPhotos = model.gamesWithPhotos.map((g) => new Game(g))),
+      gamesWithVideos: (model) => (this.gamesWithVideos = model.gamesWithVideos.map((g) => new Game(g))),
     });
 
-    this.pendingTeams = this.teams.filter(t =>
-      this.requests.some(r => r.toTeam && r.toTeam._id == t._id && r.state < 2),
+    this.pendingTeams = this.teams.filter((t) =>
+      this.requests.some((r) => r.toTeam && r.toTeam._id == t._id && r.state < 2),
     );
   }
 

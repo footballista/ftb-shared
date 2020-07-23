@@ -98,46 +98,46 @@ export class Game extends AbstractModel {
     super();
 
     this.map(model || {}, {
-      league: model => (this.league = new League(model.league)),
-      champ: model => (this.champ = new Champ(model.champ)),
-      season: model => (this.season = new Season(model.season)),
-      stage: model => (this.stage = new Stage(model.stage)),
-      teamHome: model => (this.teamHome = new Team(model.teamHome)),
-      teamAway: model => (this.teamAway = new Team(model.teamAway)),
+      league: (model) => (this.league = new League(model.league)),
+      champ: (model) => (this.champ = new Champ(model.champ)),
+      season: (model) => (this.season = new Season(model.season)),
+      stage: (model) => (this.stage = new Stage(model.stage)),
+      teamHome: (model) => (this.teamHome = new Team(model.teamHome)),
+      teamAway: (model) => (this.teamAway = new Team(model.teamAway)),
 
-      wishesHome: model => (this.wishesHome = model.wishesHome.map(w => new GameWish(w))),
-      wishesAway: model => (this.wishesHome = model.wishesAway.map(w => new GameWish(w))),
+      wishesHome: (model) => (this.wishesHome = model.wishesHome.map((w) => new GameWish(w))),
+      wishesAway: (model) => (this.wishesHome = model.wishesAway.map((w) => new GameWish(w))),
 
-      playersHome: model => (this.playersHome = model.playersHome.map(p => new Player(p))),
-      playersAway: model => (this.playersAway = model.playersAway.map(p => new Player(p))),
-      rosterHome: model => (this.rosterHome = model.rosterHome.map(p => new Player(p))),
-      rosterAway: model => (this.rosterAway = model.rosterAway.map(p => new Player(p))),
+      playersHome: (model) => (this.playersHome = model.playersHome.map((p) => new Player(p))),
+      playersAway: (model) => (this.playersAway = model.playersAway.map((p) => new Player(p))),
+      rosterHome: (model) => (this.rosterHome = model.rosterHome.map((p) => new Player(p))),
+      rosterAway: (model) => (this.rosterAway = model.rosterAway.map((p) => new Player(p))),
 
-      stadium: model => (this.stadium = new Stadium(model.stadium)),
-      pitch: model => (this.pitch = new Pitch(model.pitch)),
+      stadium: (model) => (this.stadium = new Stadium(model.stadium)),
+      pitch: (model) => (this.pitch = new Pitch(model.pitch)),
 
-      referee: model => (this.referee = new User(model.referee)),
-      photographer: model => (this.photographer = new User(model.photographer)),
-      operator: model => (this.operator = new User(model.operator)),
-      journalist: model => (this.journalist = new User(model.journalist)),
-      manager: model => (this.manager = new User(model.manager)),
-      date: model => {
+      referee: (model) => (this.referee = new User(model.referee)),
+      photographer: (model) => (this.photographer = new User(model.photographer)),
+      operator: (model) => (this.operator = new User(model.operator)),
+      journalist: (model) => (this.journalist = new User(model.journalist)),
+      manager: (model) => (this.manager = new User(model.manager)),
+      date: (model) => {
         if (model.date) {
           this.date = dayjs(model.date);
           this.timestamp = this.date.unix() * 1000;
         }
       },
-      timestamp: model => {
+      timestamp: (model) => {
         if (model.timestamp) {
           this.date = dayjs(model.timestamp);
           this.timestamp = model.timestamp;
         }
       },
-      previousDuels: model => {
-        this.previousDuels = model.previousDuels.map(g => new Game(g));
+      previousDuels: (model) => {
+        this.previousDuels = model.previousDuels.map((g) => new Game(g));
       },
-      events: model =>
-        (this.events = model.events.map(e => {
+      events: (model) =>
+        (this.events = model.events.map((e) => {
           const event = new GameEvent(e);
           if (e.team) {
             event.team = event.team._id == model.teamHome._id ? new Team(model.teamHome) : new Team(model.teamAway);
@@ -145,7 +145,7 @@ export class Game extends AbstractModel {
           event.game = new Game({ _id: model._id });
           return event;
         })),
-      staff: model => {
+      staff: (model) => {
         this.staff = model.staff.map((s) => ({ role: s.role, user: new User(s.user) }));
       },
     });

@@ -2,7 +2,7 @@ import { AbstractModel } from './abstract.model';
 import { Season } from './season.model';
 import { Country } from './country.model';
 import { User } from './user.model';
-import  sortBy  from 'lodash-es/sortBy';
+import sortBy from 'lodash-es/sortBy';
 
 export class Champ extends AbstractModel {
   _id: number;
@@ -29,20 +29,23 @@ export class Champ extends AbstractModel {
   constructor(model?: object) {
     super();
     this.map(model || {}, {
-      seasons: model => {
-        this.seasons = sortBy(model.seasons.map(s => new Season(s)), 'sortIdx');
-        this.seasons.forEach(s => {
+      seasons: (model) => {
+        this.seasons = sortBy(
+          model.seasons.map((s) => new Season(s)),
+          'sortIdx',
+        );
+        this.seasons.forEach((s) => {
           s.stages = sortBy(s.stages, 'sortIdx');
         });
 
-        this.inProgress = this.seasons.some(s => s.inProgress);
+        this.inProgress = this.seasons.some((s) => s.inProgress);
       },
-      contacts: model => {
-        this.contacts = model.contacts.map(c => Object.assign(c, { user: new User(c.user) }));
+      contacts: (model) => {
+        this.contacts = model.contacts.map((c) => Object.assign(c, { user: new User(c.user) }));
       },
-      country: model => {
+      country: (model) => {
         this.country = new Country(model.country);
-      }
+      },
     });
   }
 }

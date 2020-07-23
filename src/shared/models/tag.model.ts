@@ -21,13 +21,13 @@ export class Tag extends AbstractModel {
   constructor(model?: object) {
     super();
     this.map(model || {}, {
-      city: model => (this.city = new City(model.city)),
-      league: model => (this.league = new League(model.league)),
-      champ: model => (this.champ = new Champ(model.champ)),
-      team: model => (this.team = new Team(model.team)),
-      stadium: model => (this.stadium = new Stadium(model.stadium)),
-      game: model => (this.game = new Game(model.game)),
-      player: model => (this.player = new Player(model.player)),
+      city: (model) => (this.city = new City(model.city)),
+      league: (model) => (this.league = new League(model.league)),
+      champ: (model) => (this.champ = new Champ(model.champ)),
+      team: (model) => (this.team = new Team(model.team)),
+      stadium: (model) => (this.stadium = new Stadium(model.stadium)),
+      game: (model) => (this.game = new Game(model.game)),
+      player: (model) => (this.player = new Player(model.player)),
     });
   }
 }

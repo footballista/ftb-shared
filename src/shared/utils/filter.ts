@@ -22,7 +22,7 @@ export function filter(items: Array<any>, query: string, fields?: Array<string>)
 
   let queries = simplifyString(query).split(' ');
 
-  let checkWholeItem = function(item) {
+  let checkWholeItem = function (item) {
     for (let q of queries) {
       if (!checkPart(q, item)) {
         return false;
@@ -31,7 +31,7 @@ export function filter(items: Array<any>, query: string, fields?: Array<string>)
     return true;
   };
 
-  let checkPart = function(value, item) {
+  let checkPart = function (value, item) {
     let parts = [];
     if (fields) {
       for (let field of fields) {

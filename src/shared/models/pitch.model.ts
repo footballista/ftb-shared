@@ -15,7 +15,7 @@ export class Pitch extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      stadium: model => (this.stadium = new Stadium(model.stadium)),
+      stadium: (model) => (this.stadium = new Stadium(model.stadium)),
     });
   }
 }

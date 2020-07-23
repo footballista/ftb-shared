@@ -29,16 +29,16 @@ export class User extends AbstractModel {
     this.timezoneOffset = new Date().getTimezoneOffset();
 
     this.map(model || {}, {
-      league: model => (this.league = new League(model.league)),
-      leagueId: model => (this.league = new League({ _id: model.leagueId, name: model.leagueName })),
-      players: model => (this.players = model.players.map(p => new Player(p))),
-      roles: model => (this.roles = model.roles.map(r => new Role(r))),
-      games: model => (this.games = model.games.map(g => new Game(g))),
+      league: (model) => (this.league = new League(model.league)),
+      leagueId: (model) => (this.league = new League({ _id: model.leagueId, name: model.leagueName })),
+      players: (model) => (this.players = model.players.map((p) => new Player(p))),
+      roles: (model) => (this.roles = model.roles.map((r) => new Role(r))),
+      games: (model) => (this.games = model.games.map((g) => new Game(g))),
     });
   }
 
   isRoot() {
-    return this.roles.some(r => r.level == 'root');
+    return this.roles.some((r) => r.level == 'root');
   }
 
   isLeagueHead() {
@@ -132,7 +132,7 @@ export class User extends AbstractModel {
     if (this.isRoot()) {
       return true;
     } else {
-      return this.roles.some(r => {
+      return this.roles.some((r) => {
         return [
           Role.LEVELS.HEAD,
           Role.LEVELS.PHOTOGRAPHER,

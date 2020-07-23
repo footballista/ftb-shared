@@ -23,9 +23,9 @@ export class Role extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      user: model => (this.user = new User(model.user)),
-      league: model => (this.league = new League(model.league)),
-      team: model => (this.team = new Team(model.team)),
+      user: (model) => (this.user = new User(model.user)),
+      league: (model) => (this.league = new League(model.league)),
+      team: (model) => (this.team = new Team(model.team)),
     });
   }
 }

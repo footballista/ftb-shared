@@ -11,7 +11,7 @@ export class GameWish extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      date: model => {
+      date: (model) => {
         this.date = dayjs(model.date);
         this.timestamp = parseInt(this.date.format('X'));
       },

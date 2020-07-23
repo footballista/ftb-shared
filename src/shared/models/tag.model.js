@@ -7,17 +7,17 @@ import { Stadium } from './stadium.model';
 import { Game } from './game.model';
 import { Player } from './player.model';
 export class Tag extends AbstractModel {
-    constructor(model) {
-        super();
-        this.map(model || {}, {
-            city: model => (this.city = new City(model.city)),
-            league: model => (this.league = new League(model.league)),
-            champ: model => (this.champ = new Champ(model.champ)),
-            team: model => (this.team = new Team(model.team)),
-            stadium: model => (this.stadium = new Stadium(model.stadium)),
-            game: model => (this.game = new Game(model.game)),
-            player: model => (this.player = new Player(model.player)),
-        });
-    }
+  constructor(model) {
+    super();
+    this.map(model || {}, {
+      city: (model) => (this.city = new City(model.city)),
+      league: (model) => (this.league = new League(model.league)),
+      champ: (model) => (this.champ = new Champ(model.champ)),
+      team: (model) => (this.team = new Team(model.team)),
+      stadium: (model) => (this.stadium = new Stadium(model.stadium)),
+      game: (model) => (this.game = new Game(model.game)),
+      player: (model) => (this.player = new Player(model.player)),
+    });
+  }
 }
 //# sourceMappingURL=tag.model.js.map

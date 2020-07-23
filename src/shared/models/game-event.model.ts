@@ -47,7 +47,7 @@ export class GameEvent extends AbstractModel {
   static EXTRAS = {
     OWN_GOAL: 1,
     FREE_KICK: 2,
-    PENALTY: 3
+    PENALTY: 3,
   };
 
   _id: number;
@@ -65,8 +65,8 @@ export class GameEvent extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      firstPlayer: model => (this.firstPlayer = new Player(model.firstPlayer)),
-      secondPlayer: model => (this.secondPlayer = new Player(model.secondPlayer)),
+      firstPlayer: (model) => (this.firstPlayer = new Player(model.firstPlayer)),
+      secondPlayer: (model) => (this.secondPlayer = new Player(model.secondPlayer)),
     });
   }
 }

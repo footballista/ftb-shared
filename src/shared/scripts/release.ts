@@ -101,6 +101,7 @@ const generateChangelog = async (version: string) => {
 };
 
 const commitAndTag = async (version: string) => {
+  execSync('prettier . --write', { stdio: [0, 1, 2] });
   await git.add([
     rootDir + 'package.json',
     rootDir + 'package-lock.json',

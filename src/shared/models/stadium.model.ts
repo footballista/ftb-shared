@@ -24,9 +24,9 @@ export class Stadium extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      league: model => (this.league = new League(model.league)),
-      games: model => (this.games = model.games.map(g => new Game(g))),
-      pitches: model => (this.pitches = model.pitches.map(p => new Pitch(p))),
+      league: (model) => (this.league = new League(model.league)),
+      games: (model) => (this.games = model.games.map((g) => new Game(g))),
+      pitches: (model) => (this.pitches = model.pitches.map((p) => new Pitch(p))),
     });
   }
 }

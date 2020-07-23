@@ -1,7 +1,7 @@
-import {AbstractModel} from "./abstract.model";
-import {Team} from "./team.model";
-import {League} from "./league.model";
-import {Champ} from "./champ.model";
+import { AbstractModel } from './abstract.model';
+import { Team } from './team.model';
+import { League } from './league.model';
+import { Champ } from './champ.model';
 
 export class Country extends AbstractModel {
   _id: number;
@@ -23,9 +23,9 @@ export class Country extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      league: model => (this.league = new League(model.league)),
-      teams: model => (this.teams = model.teams.map(t => new Team(t))),
-      champs: model => (this.champs = model.champs.map(c => new Champ(c))),
+      league: (model) => (this.league = new League(model.league)),
+      teams: (model) => (this.teams = model.teams.map((t) => new Team(t))),
+      champs: (model) => (this.champs = model.champs.map((c) => new Champ(c))),
     });
   }
 }

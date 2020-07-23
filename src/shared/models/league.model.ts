@@ -65,12 +65,12 @@ export class League extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      city: model => (this.city = new City(model.city)),
-      champs: model => (this.champs = model.champs.map(c => new Champ(c))),
-      news: model => (this.news = model.news.map(n => new Post(n))),
-      stadiums: model => (this.stadiums = model.stadiums.map(c => new Stadium(c))),
-      gamesWithPhotos: model => (this.gamesWithPhotos = model.gamesWithPhotos.map(g => new Game(g))),
-      gamesWithVideos: model => (this.gamesWithVideos = model.gamesWithVideos.map(g => new Game(g))),
+      city: (model) => (this.city = new City(model.city)),
+      champs: (model) => (this.champs = model.champs.map((c) => new Champ(c))),
+      news: (model) => (this.news = model.news.map((n) => new Post(n))),
+      stadiums: (model) => (this.stadiums = model.stadiums.map((c) => new Stadium(c))),
+      gamesWithPhotos: (model) => (this.gamesWithPhotos = model.gamesWithPhotos.map((g) => new Game(g))),
+      gamesWithVideos: (model) => (this.gamesWithVideos = model.gamesWithVideos.map((g) => new Game(g))),
     });
   }
 }

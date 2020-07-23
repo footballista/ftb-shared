@@ -19,7 +19,7 @@ export class StageEvent extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      date: model => (this.date = dayjs(model.date)),
+      date: (model) => (this.date = dayjs(model.date)),
     });
   }
 }

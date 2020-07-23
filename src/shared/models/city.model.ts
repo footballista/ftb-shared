@@ -14,7 +14,7 @@ export class City extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      leagues: model => (this.leagues = model.leagues.map(l => new League(l))),
+      leagues: (model) => (this.leagues = model.leagues.map((l) => new League(l))),
     });
   }
 }

@@ -30,18 +30,18 @@ export class Post extends AbstractModel {
   constructor(model?: object) {
     super();
     this.map(model || {}, {
-      date: model => {
+      date: (model) => {
         this.date = dayjs(model.date);
       },
-      tags: model => {
-        this.tags = model.tags.map(t => new Tag(t));
+      tags: (model) => {
+        this.tags = model.tags.map((t) => new Tag(t));
       },
-      body: model => {
+      body: (model) => {
         this.body = model.body;
         try {
           const parsed = JSON.parse(model.body);
           //add recursive parsing for nested entities
-          parsed.forEach(part => {
+          parsed.forEach((part) => {
             this.plainBody += part.text;
             this.bodyHTML += `<p>${part.text}</p>`; // todo add links and tags parsing
           });
@@ -51,8 +51,8 @@ export class Post extends AbstractModel {
           this.bodyHTML = `<p>${model.body}</p>`;
         }
       },
-      relatedPosts: model => {
-        this.relatedPosts = model.relatedPosts.map(p => new Post(p));
+      relatedPosts: (model) => {
+        this.relatedPosts = model.relatedPosts.map((p) => new Post(p));
       },
     });
 

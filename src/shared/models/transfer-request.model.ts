@@ -33,17 +33,17 @@ export class TransferRequest extends AbstractModel {
   constructor(model?: Object) {
     super();
     this.map(model || {}, {
-      fromTeam: model => (this.fromTeam = new Team(model.fromTeam)),
-      toTeam: model => (this.toTeam = new Team(model.toTeam)),
-      player: model => (this.player = new Player(model.player)),
-      createdTimestamp: model => (this.createdDate = dayjs(model.createdTimestamp, 'X')),
-      capApprovedTimestamp: model => (this.capApprovedDate = dayjs(model.capApprovedTimestamp, 'X')),
-      adminConfirmedTimestamp: model => (this.adminConfirmedDate = dayjs(model.adminConfirmedTimestamp, 'X')),
-      declinedTimestamp: model => (this.declinedDate = dayjs(model.declinedTimestamp, 'X')),
-      createdBy: model => (this.createdBy = new User(model.createdBy)),
-      capApprovedBy: model => (this.capApprovedBy = new User(model.capApprovedBy)),
-      adminConfirmedBy: model => (this.adminConfirmedBy = new User(model.adminConfirmedBy)),
-      declinedBy: model => (this.declinedBy = new User(model.declinedBy)),
+      fromTeam: (model) => (this.fromTeam = new Team(model.fromTeam)),
+      toTeam: (model) => (this.toTeam = new Team(model.toTeam)),
+      player: (model) => (this.player = new Player(model.player)),
+      createdTimestamp: (model) => (this.createdDate = dayjs(model.createdTimestamp, 'X')),
+      capApprovedTimestamp: (model) => (this.capApprovedDate = dayjs(model.capApprovedTimestamp, 'X')),
+      adminConfirmedTimestamp: (model) => (this.adminConfirmedDate = dayjs(model.adminConfirmedTimestamp, 'X')),
+      declinedTimestamp: (model) => (this.declinedDate = dayjs(model.declinedTimestamp, 'X')),
+      createdBy: (model) => (this.createdBy = new User(model.createdBy)),
+      capApprovedBy: (model) => (this.capApprovedBy = new User(model.capApprovedBy)),
+      adminConfirmedBy: (model) => (this.adminConfirmedBy = new User(model.adminConfirmedBy)),
+      declinedBy: (model) => (this.declinedBy = new User(model.declinedBy)),
     });
   }
 

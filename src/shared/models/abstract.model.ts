@@ -3,7 +3,7 @@ export abstract class AbstractModel {
     if (!model) return;
 
     for (let key in model) {
-      if ((model[key]) != null) {
+      if (model[key] != null) {
         //filtering out null values
         if (customMappings[key]) {
           customMappings[key](model);
@@ -17,12 +17,12 @@ export abstract class AbstractModel {
 
   //receive object to store in DB
   compact() {
-    const keys = Object.keys(this).filter(k => {
+    const keys = Object.keys(this).filter((k) => {
       if (k == 'customMappings') return false;
       return typeof this[k] != 'function';
     });
     let data = {};
-    keys.forEach(k => {
+    keys.forEach((k) => {
       data[k] = this[k] && this[k].compact ? this[k].compact() : this[k];
     });
     return data;

@@ -3,7 +3,6 @@ import { User } from './user.model';
 import { League } from './league.model';
 import dayjs from 'dayjs';
 
-
 export class Document extends AbstractModel {
   _id: number;
   name: string;
