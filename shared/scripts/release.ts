@@ -95,7 +95,7 @@ const generateChangelog = async (version: string) => {
   writeFileSync(rootDir + 'CHANGELOG.md', changelog);
 
   const jsonChangelog = JSON.parse(readFileSync(rootDir + 'CHANGELOG.json').toString());
-  jsonChangelog[version] = changelog;
+  jsonChangelog[version] = execSync(`conventional-changelog -p angular -r 1`).toString();
   writeFileSync(rootDir + 'CHANGELOG.json', JSON.stringify(jsonChangelog));
   return changelog;
 };
