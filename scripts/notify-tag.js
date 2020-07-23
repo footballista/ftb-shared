@@ -146,9 +146,9 @@ var notify = function () {
               emoji_1.emoji.purple_heart +
                 ' *SHARED COMPONENTS* new tag *v.' +
                 tag +
-                '* released. Do not forget to update dependencies in client projects.\n\n\nChanges: \n ' +
+                '* released. Do not forget to update dependencies in client projects.\n\n ' +
                 changes +
-                '\n\n\n\n Full changelog: https://github.com/' +
+                '\n\nFull changelog: https://github.com/' +
                 repo.owner +
                 '/' +
                 repo.name +
