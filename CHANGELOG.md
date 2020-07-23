@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/footballista/ftb-shared/compare/1.3.0...1.3.1) (2020-07-23)
+
+### Bug Fixes
+
+- running prettier before release ([feb2e47](https://github.com/footballista/ftb-shared/commit/feb2e472dbd97e9ec26c6a1f75a545c81b1ded47))
+- updated pathes in release script ([2a56de7](https://github.com/footballista/ftb-shared/commit/2a56de7c32c0043594ce35f2f45a9e680a44c667))
+
 # [1.3.0](https://github.com/footballista/ftb-shared/compare/1.2.7...1.3.0) (2020-07-23)
 
 ### Features
