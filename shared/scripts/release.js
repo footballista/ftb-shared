@@ -70,6 +70,9 @@ var run = function () { return __awaiter(_this, void 0, void 0, function () {
                 return [4 /*yield*/, generateChangelog(version)];
             case 6:
                 _a.sent();
+                return [4 /*yield*/, commitAndTag(version)];
+            case 7:
+                _a.sent();
                 return [2 /*return*/];
         }
     });

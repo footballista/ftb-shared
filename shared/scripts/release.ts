@@ -21,7 +21,7 @@ const run = async () => {
   const version = await getVersion(level);
   await updatePackageVersion(version);
   await generateChangelog(version);
-  // await commitAndTag(version);
+  await commitAndTag(version);
 };
 
 const checkIsOnMaster = async () => {
