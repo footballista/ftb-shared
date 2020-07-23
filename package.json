@@ -1,6 +1,6 @@
 {
   "name": "ftb-shared",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Shared code for footballista projects",
   "main": "index.js",
   "scripts": {
