@@ -2,4 +2,4 @@
 require('child_process').execSync('tsc ./**/*.ts');
 
 // then simply running shared script
-// require('../shared/scripts/release');
+require('../shared/scripts/release');
