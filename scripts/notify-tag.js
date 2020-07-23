@@ -39,15 +39,18 @@ exports.__esModule = true;
 var emoji_1 = require("../shared/utils/emoji");
 var telegram_1 = require("../shared/utils/telegram");
 var repository_1 = require("../shared/utils/repository");
+var fs_1 = require("fs");
 var tgClient = new telegram_1.TgClient();
 var notify = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var repo;
+    var repo, tag, changes;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, repository_1.getRepository()];
             case 1:
                 repo = _a.sent();
-                return [4 /*yield*/, tgClient.sendMessage('channel', emoji_1.emoji.purple_heart + " *SHARED COMPONENTS* new tag released. Do not forget to update dependencies in client projects.\n\n\nchangelog: https://github.com/" + repo.owner + "/" + repo.name + "/blob/master/CHANGELOG.md")];
+                tag = process.env.GITHUB_REF.split('/')[2];
+                changes = JSON.parse(fs_1.readFileSync(__dirname + '/../CHANGELOG.json').toString())[tag];
+                return [4 /*yield*/, tgClient.sendMessage('channel', emoji_1.emoji.purple_heart + " *SHARED COMPONENTS* new tag *v." + tag + "* released. Do not forget to update dependencies in client projects.\n\n\nChanges: " + changes + "\n\n\n\n Full changelog: https://github.com/" + repo.owner + "/" + repo.name + "/blob/master/CHANGELOG.md")];
             case 2:
                 _a.sent();
                 return [2 /*return*/];

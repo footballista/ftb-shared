@@ -20,8 +20,8 @@ const run = async () => {
   const level = await getReleaseLevel();
   const version = await getVersion(level);
   await updatePackageVersion(version);
-  await generateChangelog();
-  await commitAndTag(version);
+  await generateChangelog(version);
+  // await commitAndTag(version);
 };
 
 const checkIsOnMaster = async () => {
@@ -90,9 +90,13 @@ const updatePackageVersion = async (version: string) => {
   writeFileSync(rootDir + 'package-lock.json', JSON.stringify(packageLockJson, null, 2) + '\n');
 };
 
-const generateChangelog = async () => {
+const generateChangelog = async (version: string) => {
   const changelog = execSync(`conventional-changelog -p angular -i CHANGELOG.md -r 1`);
   writeFileSync(rootDir + 'CHANGELOG.md', changelog);
+
+  const jsonChangelog = JSON.parse(readFileSync(rootDir + 'CHANGELOG.json').toString());
+  jsonChangelog[version] = changelog;
+  writeFileSync(rootDir + 'CHANGELOG.json', JSON.stringify(jsonChangelog));
   return changelog;
 };
 
