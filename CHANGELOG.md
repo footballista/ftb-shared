@@ -1,3 +1,7 @@
+## [1.2.4](https://github.com/footballista/ftb-shared/compare/1.2.3...1.2.4) (2020-07-23)
+
+
+
 ## [1.2.3](https://github.com/footballista/ftb-shared/compare/1.2.2...1.2.3) (2020-07-23)
 
 
