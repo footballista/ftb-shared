@@ -10,10 +10,11 @@
   "author": "Fedor Avetisov <f.avetisov@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^14.0.24",
+    "@types/node": "^14.11.8",
     "typescript": "^3.9.7"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.5.7",
     "conventional-changelog": "^3.1.21",
     "conventional-changelog-cli": "^2.0.34",
     "dayjs": "^1.8.29",

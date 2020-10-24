@@ -16,3 +16,4 @@ UserInterfaceState.xcuserstate
 log.txt
 *.sublime-project
 *.sublime-workspace
+/dist/

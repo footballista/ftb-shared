@@ -1,10 +1,10 @@
 import { Game } from '../models/game.model';
 
-export function extractVideoPreviewSrc(src: string): string {
+export function extractVideoPreviewSrc(src: string): string | null {
   const youtube = src.indexOf('youtu.be') > -1 || src.indexOf('youtube.com') > -1;
 
   if (!youtube) {
-    return;
+    return null;
   }
 
   let videoId =
@@ -25,7 +25,6 @@ function teamIs(game: Game, teamId: number, cmpHome: CompareScoreFn, cmpAway: Co
 
   if (!home && !away) {
     console.warn(`${teamId} not found in game ${game._id} with teams ${game.teamHome._id} and ${game.teamAway._id}`);
-
     return false;
   }
 
@@ -35,10 +34,10 @@ function teamIs(game: Game, teamId: number, cmpHome: CompareScoreFn, cmpAway: Co
   return winHome || winAway;
 }
 
-const cmpHomeWiner = (g) => g.scoreFtHome > g.scoreFtAway || g.scorePenHome > g.scorePenAway;
-const cmpAwayWiner = (g) => g.scoreFtAway > g.scoreFtHome || g.scorePenAway > g.scorePenHome;
-const cmpHomeLoser = (g) => g.scoreFtHome < g.scoreFtAway || g.scorePenHome < g.scorePenAway;
-const cmpAwayLoser = (g) => g.scoreFtAway < g.scoreFtHome || g.scorePenAway < g.scorePenHome;
+const cmpHomeWiner = (g: Game) => g.scoreFtHome > g.scoreFtAway || g.scorePenHome > g.scorePenAway;
+const cmpAwayWiner = (g: Game) => g.scoreFtAway > g.scoreFtHome || g.scorePenAway > g.scorePenHome;
+const cmpHomeLoser = (g: Game) => g.scoreFtHome < g.scoreFtAway || g.scorePenHome < g.scorePenAway;
+const cmpAwayLoser = (g: Game) => g.scoreFtAway < g.scoreFtHome || g.scorePenAway < g.scorePenHome;
 
 export function isWinner(game: Game, teamId: number): boolean {
   return teamIs(game, teamId, cmpHomeWiner, cmpAwayWiner);

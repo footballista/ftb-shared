@@ -2,12 +2,13 @@ import fetch from 'node-fetch';
 
 const token = process.env.GITHUB_TOKEN;
 
+// todo remove "fetch as any" hardcode
 export const githubGraphql = async (query) => {
   const body = JSON.stringify({ query: 'query { ' + query + '}' });
-  const headers = new fetch.Headers();
+  const headers = new (fetch as any).Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('Authorization', 'Bearer ' + token);
-  const response = await fetch('https://api.github.com/graphql', {
+  const response = await (fetch as any)('https://api.github.com/graphql', {
     method: 'POST',
     mode: 'cors',
     cache: 'no-cache',
@@ -22,10 +23,10 @@ export const githubGraphql = async (query) => {
 };
 
 export const githubRest = async (method, url, body) => {
-  const headers = new fetch.Headers();
+  const headers = new (fetch as any).Headers();
   headers.append('Content-Type', 'application/json');
   headers.append('Authorization', 'Bearer ' + token);
-  const response = await fetch('https://api.github.com' + url, {
+  const response = await (fetch as any)('https://api.github.com' + url, {
     method,
     mode: 'cors',
     cache: 'no-cache',
